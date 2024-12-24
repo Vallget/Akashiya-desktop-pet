@@ -5,7 +5,7 @@ Mini project for Rosario+vampire community
 This program create a little Charachter in the right bottom of your screen. You can also move this cutie 
 across your screen.
 
-https://github.com/user-attachments/assets/0ef60e4c-851f-4d83-8976-ded032cd5209
+![Відео-без-назви-—-зроблено-у-Clipchamp](https://github.com/user-attachments/assets/303050fa-017a-44d9-9614-8cc45d881e80)
 
 night and day version of appearance
 
@@ -13,6 +13,6 @@ night and day version of appearance
 
 tray icon which features I will expand later
 
+![Відео-без-назви-—-зроблено-у-Clipchamp-_1_](https://github.com/user-attachments/assets/47f5f515-ab7a-453a-8210-712cc9e93f06)
 
-https://github.com/user-attachments/assets/f1e6172b-71aa-4544-bd52-c07fcfd8beca
 
