@@ -16,3 +16,5 @@ tray icon which features I will expand later
 ![Відео-без-назви-—-зроблено-у-Clipchamp-_1_](https://github.com/user-attachments/assets/47f5f515-ab7a-453a-8210-712cc9e93f06)
 
 
+## Disclaimer
+This software is provided "as is" without any warranty. Use the software solely at your own risk. The author is not responsible for any damages or losses resulting from the use of this software.
