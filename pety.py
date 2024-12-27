@@ -1,9 +1,9 @@
 from tkinter import *
 from PIL import Image, ImageTk
-from datetime import datetime
 from pystray import *
-import threading 
-import time
+import threading
+
+time_apr = "day"
 
 
 def tray_app():
@@ -11,44 +11,43 @@ def tray_app():
     tray_image = Image.open("images/lol.png")
 
     icon = Icon("Mainmenu", tray_image, menu = Menu(
-        MenuItem("Exit", opmenu)
+        MenuItem("Exit", opmenu),
+        MenuItem("Ch. Moka", opmenu)
         ))
 
     icon.run()
 
 
 def opmenu(icon, item):
-    global root
-    root.destroy()
-
-
-def whatime():
-    currhour = datetime.now().hour
-    return "day" if 7 <= currhour < 19 else "night"
-
-
-def img_sel():
-    global image, photo, new_time
-    new_time = whatime()
-
-    if new_time == "day":
-        image_path = "images/pixil-frame-00.png"
-        image = Image.open(image_path)
-
-    else:
-        image_path = "images/pixil-frame-01.png"
-        image = Image.open(image_path)
-
-    photo = ImageTk.PhotoImage(image)
-
-
+    global root, label, time_apr, photo
+    if str(item) == "Exit":
+        root.destroy()
+    elif str(item) == "Ch. Moka":
+        if time_apr == "day":
+            image_path = "images/Mokanight.png"
+            image = Image.open(image_path)
+            photo = ImageTk.PhotoImage(image)
+        
+            label.configure(image=photo)
+        
+            time_apr = "night"
+        else:
+            image_path = "images/Mokaday.png"
+            image = Image.open(image_path)
+            photo = ImageTk.PhotoImage(image)
+        
+            label.configure(image=photo)
+        
+            time_apr = "day"
+       
+        
 def move(event):
     global label, photo
-    if new_time == "day":
-        image_path = "images/pixil-frame-modern0.png"
+    if time_apr == "day":
+        image_path = "images/Mokada_pick.png"
         
     else:
-        image_path = "images/pixil-frame.png"
+        image_path = "images/Mokani_pick.png"
 
 
     image = Image.open(image_path)
@@ -75,15 +74,13 @@ def move(event):
     root.geometry(f"{window_width}x{window_height}+{new_x}+{new_y}")
 
 
-
 def putie(event):
     global label, photo
-    if new_time == "day":
-        image_path = "images/pixil-frame-00.png"
-
+    if time_apr == "day":
+        image_path = "images/Mokaday.png"
 
     else:
-        image_path = "images/pixil-frame-01.png"
+        image_path = "images/Mokanight.png"
 
     image = Image.open(image_path)
     photo = ImageTk.PhotoImage(image)
@@ -111,8 +108,9 @@ y = screen_height - window_height
 
 root.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
-# appearance of the image
-img_sel()
+image_path = "images/Mokaday.png"
+image = Image.open(image_path)
+photo = ImageTk.PhotoImage(image)
 
 label = Label(root, image=photo, bg="blue")
 label.pack()
