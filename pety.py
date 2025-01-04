@@ -3,52 +3,64 @@ from PIL import Image, ImageTk
 from pystray import *
 import threading
 
-time_apr = "day"
+char = "day"
 
 
 def tray_app():
-    # this is completely different program I should move it to the another file soon, it create tray icon and execute func opmenu
     tray_image = Image.open("images/lol.png")
 
     icon = Icon("Mainmenu", tray_image, menu = Menu(
         MenuItem("Exit", opmenu),
-        MenuItem("Ch. Moka", opmenu)
+        MenuItem("Ch. Moka", opmenu),
+        MenuItem("Kurumu", opmenu),
+        MenuItem("Mizore", opmenu),
         ))
 
     icon.run()
 
 
 def opmenu(icon, item):
-    global root, label, time_apr, photo
+    global root, label, char, photo
     if str(item) == "Exit":
         root.destroy()
+          
     elif str(item) == "Ch. Moka":
-        if time_apr == "day":
-            image_path = "images/Mokanight.png"
-            image = Image.open(image_path)
-            photo = ImageTk.PhotoImage(image)
-        
-            label.configure(image=photo)
-        
-            time_apr = "night"
+        if char == "day":
+            image_path = "images/Moka_Akashiya/Mokanight.png"
+            char = "night"
+            
         else:
-            image_path = "images/Mokaday.png"
-            image = Image.open(image_path)
-            photo = ImageTk.PhotoImage(image)
+            image_path = "images/Moka_Akashiya/Mokaday.png"
+            char = "day"
+            
+    elif str(item) == "Kurumu":
+        image_path = "images/Kurumu_Kurono/kurumu.png"
+        char = "kur"
+    
+    elif str(item) == "Mizore":
+        image_path = "images/Mizore_Shirayuki/Misore.png"
+        char = "miz"
         
-            label.configure(image=photo)
-        
-            time_apr = "day"
+    image = Image.open(image_path)
+    photo = ImageTk.PhotoImage(image)
+    label.configure(image=photo)
        
         
 def move(event):
     global label, photo
-    if time_apr == "day":
-        image_path = "images/Mokada_pick.png"
+    
+    if char == "day":
+        image_path = "images/Moka_Akashiya/Mokada_pick.png"
         
-    else:
-        image_path = "images/Mokani_pick.png"
+    elif char == "night":
+        image_path = "images/Moka_Akashiya/Mokani_pick.png"
+        
+    elif char == "kur":
+        image_path = "images/Kurumu_Kurono/kurumufly.png"
 
+    elif char == "miz":
+        image_path = "images/Mizore_Shirayuki/Misore_take.png"
+        
 
     image = Image.open(image_path)
     photo = ImageTk.PhotoImage(image)
@@ -76,11 +88,19 @@ def move(event):
 
 def putie(event):
     global label, photo
-    if time_apr == "day":
-        image_path = "images/Mokaday.png"
+    if char == "day":
+        image_path = "images/Moka_Akashiya/Mokaday.png"
 
-    else:
-        image_path = "images/Mokanight.png"
+    elif char == "night":
+        image_path = "images/Moka_Akashiya/Mokanight.png"
+
+    elif char == "kur":
+        image_path = "images/Kurumu_Kurono/kurumu.png"
+
+    elif char == "miz":
+        image_path = "images/Mizore_Shirayuki/Misore.png"
+
+
 
     image = Image.open(image_path)
     photo = ImageTk.PhotoImage(image)
@@ -99,8 +119,8 @@ screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()   
 
 # set window size
-window_width = 94
-window_height = 94 
+window_width = 96
+window_height = 96 
 
 # move window to right bottom
 x = screen_width - window_width     
@@ -108,7 +128,7 @@ y = screen_height - window_height
 
 root.geometry(f"{window_width}x{window_height}+{x}+{y}")
 
-image_path = "images/Mokaday.png"
+image_path = "images/Moka_Akashiya/Mokaday.png"
 image = Image.open(image_path)
 photo = ImageTk.PhotoImage(image)
 
