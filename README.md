@@ -1,4 +1,4 @@
-# Akashiya-screen-pet
+# Akashiya-desktop-pet
 Mini project for Rosario+vampire community
 
 
